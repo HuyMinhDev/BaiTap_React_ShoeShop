@@ -1,0 +1,26 @@
+.product-top {
+  .product-img {
+    position: relative;
+  }
+  .product-icon {
+    position: absolute;
+    content: "";
+    display: flex;
+    flex-direction: column;
+    color: black;
+    top: 15px;
+    right: 15px;
+    gap: 5px;
+    i {
+      padding: 5px;
+      border-radius: 30px;
+      border: 1px solid black;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      &.liked {
+        color: red;
+        border: 1px solid red;
+      }
+    }
+  }
+}
