@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./ProductItem.scss";
+import ProductDetail from "./ProductDetail";
+import { useNavigate } from "react-router-dom";
 
 const ProductItem = ({ item, setStateModal }) => {
+  const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
-
+  const handleViewDetail = () => {
+    navigate(`/product/${item.id}`);
+  };
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
   };
+
   return (
     <div className="card h-100">
       <div className="product-top">
@@ -18,7 +24,10 @@ const ProductItem = ({ item, setStateModal }) => {
             className={`fa-heart ${isLiked ? "fa-solid liked" : "fa-regular"}`}
             onClick={handleLikeClick}
           ></i>
-          <i onClick={() => setStateModal(item)} class="fa-solid fa-eye"></i>
+          <i
+            onClick={() => setStateModal(item)}
+            className="fa-solid fa-eye"
+          ></i>
         </div>
       </div>
 
@@ -27,7 +36,7 @@ const ProductItem = ({ item, setStateModal }) => {
         <p className="card-text">${item.price}</p>
         <button
           className="btn btn-primary mt-auto"
-          onClick={() => setStateModal(item)}
+          onClick={() => handleViewDetail()}
         >
           <i class="fa-solid fa-cart-shopping me-2"></i>
           View Details
